@@ -51,6 +51,9 @@ export function PostCard(props: {
             {post.title}
           </Typography>
           <Typography>{post.content}</Typography>
+          <Typography align="left">
+            {post.author?.firstName} {post.author?.lastName}
+          </Typography>
           <Typography align="right">
             {moment(post.createdAt).fromNow()}
           </Typography>

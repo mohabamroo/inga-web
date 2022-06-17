@@ -15,6 +15,7 @@ import {
   CircularProgress,
   Grid,
   TextField,
+  Tooltip,
   Typography
 } from "@mui/material";
 import { PostComment } from "../models/comment.model";
@@ -76,11 +77,18 @@ export function PostComments(props: { postID: number }) {
         )}
         {comments.map((x) => (
           <ListItem key={x.id}>
-            <ListItemAvatar>
-              <Avatar>
+            <ListItemAvatar sx={{ mr: 2 }}>
+              <Avatar sx={{ width: 56, height: 56 }}>
                 {/* TODO: user image */}
                 <ImageIcon />
               </Avatar>
+              <Tooltip
+                title={x?.author?.firstName + " " + (x?.author?.lastName || "")}
+              >
+                <Typography variant="subtitle1">
+                  {x?.author?.firstName}
+                </Typography>
+              </Tooltip>
             </ListItemAvatar>
             <ListItemText
               primary={x?.content}
